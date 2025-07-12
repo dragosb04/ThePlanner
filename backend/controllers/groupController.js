@@ -1,7 +1,11 @@
 const Group = require('../models/group');
 
 exports.createGroup = (req, res) => {
+    console.log('BODY:', req.body);
     const groupData = req.body;
+    if (!groupData || !groupData.name || !groupData.owner_id) {
+        return res.status(400).json({ error: 'name și owner_id sunt obligatorii.' });
+    }
     Group.create(groupData, (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         res.status(201).json({ message: 'Group created', groupId: results.insertId });
