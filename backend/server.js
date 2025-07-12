@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const eventRoutes = require('./routes/eventRoutes');
 const userRoutes = require('./routes/userRoutes');
+const groupRoutes = require('./routes/groupRoutes');
 
 // Middleware
 app.use(cors());
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 //Add routes
 app.use('/api/events', eventRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/groups', groupRoutes);
 
 // Test DB
 app.get('/test-db', (req, res) => {
