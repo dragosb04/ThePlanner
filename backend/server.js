@@ -5,13 +5,14 @@ const db = require('./models/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const eventRoutes = require('./routes/eventRoutes');
-const userRoutes = require('./routes/userRoutes');
-const groupRoutes = require('./routes/groupRoutes');
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+const eventRoutes = require('./routes/eventRoutes');
+const userRoutes = require('./routes/userRoutes');
+const groupRoutes = require('./routes/groupRoutes');
 
 // Test route
 app.get('/', (req, res) => {
