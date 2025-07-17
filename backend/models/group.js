@@ -82,6 +82,10 @@ const Group = {
             [groupId, userId],
             callback
         );
+    },
+
+    getAll: (callback) => {
+        db.query('SELECT * FROM groups', callback);
     }
 };
 

@@ -38,6 +38,13 @@ exports.deleteGroup = (req, res) => {
     });
 };
 
+exports.getAllGroups = (req, res) => {
+    Group.getAll((err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+};
+
 exports.getGroups = (req, res) => {
     const userId = req.query.userId;
 

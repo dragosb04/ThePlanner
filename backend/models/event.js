@@ -3,23 +3,21 @@ const db = require('./db');
 
 const Event = {
     create: (eventData, callback) => {
-        const sql = `INSERT INTO events (name, eventDate, eventTime, groups, location, details, creator)
-                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
+        const sql = `INSERT INTO events (name, eventDate, eventTime, location, details, creator_id)
+                     VALUES (?, ?, ?, ?, ?, ?)`;
         const values = [
             eventData.name,
             eventData.eventDate,
             eventData.eventTime,
-            eventData.groups,
             eventData.location,
             eventData.details,
-            eventData.creator,
+            eventData.creator_id
         ];
 
         db.query(sql, values, (err, result) => {
             if (err) return callback(err);
-            callback(null, result.insertId); // returnează ID-ul noului eveniment
+            callback(null, result.insertId);
         });
-    
     },
 
     getAll: (callback) => {
@@ -32,7 +30,7 @@ const Event = {
 
     update: (id, eventData, callback) => {
         const sql = `UPDATE events SET name=?, eventDate=?, eventTime=?, groups=?, location=?, details=?
-                 WHERE id = ?`;
+                     WHERE id = ?`;
         const values = [
             eventData.name,
             eventData.eventDate,
