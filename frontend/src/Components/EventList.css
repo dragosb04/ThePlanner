@@ -33,7 +33,8 @@
 .event-title {
   font-size: 1.6rem;
   margin-bottom: 4px;
-  
+  align-items: center;
+  display: inherit;
 }
 
 h2 {
@@ -46,7 +47,7 @@ h2 {
 }
 
 .event-countdown {
-  text-align: right;
+  text-align: center;
 }
 
 .event-days {

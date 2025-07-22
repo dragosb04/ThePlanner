@@ -40,6 +40,11 @@
   border-radius: 50%;
   margin-bottom: 8px;
   filter: brightness(0.7);
+  transition: ease 0.5s;
+}
+
+.user-img:hover {
+  filter: brightness(1);
 }
 
 .logout-text{

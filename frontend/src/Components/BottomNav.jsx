@@ -15,11 +15,11 @@ function BottomNav() {
       <div className={`nav-icon ${currentPath === '/search' ? 'active' : ''}`}>
         <Link to="/search"><FaSearch /></Link>
       </div>
-      <div className="nav-icon central">
-        <FaPlusCircle />
+      <div className={`nav-icon central ${currentPath === '/add' ? 'active' : ''}`}>
+        <Link to="/add"><FaPlusCircle /></Link>
       </div>
-      <div className={`nav-icon ${currentPath === '/list' ? 'active' : ''}`}>
-        <Link to="/list"><FaList /></Link>
+      <div className={`nav-icon ${currentPath === '/my-events' ? 'active' : ''}`}>
+        <Link to="/my-events"><FaList /></Link>
       </div>
       <div className={`nav-icon ${currentPath === '/settings' ? 'active' : ''}`}>
         <Link to="/settings"><FaCog /></Link>

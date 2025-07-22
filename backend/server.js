@@ -97,8 +97,6 @@ app.put('/api/settings', (req, res) => {
   // Preia profilePicture din body și mapează-l la profile_picture
   const { username, email, profilePicture, status, role } = req.body;
 
-  console.log('Received settings:', { username, email, profilePicture, status, role });
-
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) {
     return res.status(401).json({ message: 'Token lipsă sau invalid' });

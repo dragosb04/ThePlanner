@@ -14,8 +14,8 @@ function Header() {
   return (
     <header className="header">
       <div className="welcome-text">
-        <div className='welcome-header-text'>{currentPath === '/' ? 'Bun venit' : currentPath == '/settings' ? 'Setări pentru': 'Bun venit'}</div>
-        <div className="username">{user ? user.username : ' '}</div>
+        <div className='welcome-header-text'>{currentPath === '/' ? 'Bun venit' : currentPath === '/settings' ? 'Setări' : currentPath === '/add' ? 'Creează eveniment' : currentPath === '/my-events' ? 'Evenimentele tale' : 'Bun venit'}</div>
+        {currentPath === '/' ? <div className="username">{user ? user.username : ' '}</div> : ' '}
         <div className='logout-text'>
         Ai terminat?
         <button className="logout-button" onClick={handleLogout}>

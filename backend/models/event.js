@@ -46,6 +46,11 @@ const Event = {
     delete: (id, callback) => {
         db.query('DELETE FROM events WHERE id = ?', [id], callback);
     },
+
+    getEventsByUserId: (userID, callback) => {
+        const sql = `SELECT * FROM events WHERE creator_id = ?`;
+        db.query(sql, [userID], callback);
+    }
 };
 
 module.exports = Event;

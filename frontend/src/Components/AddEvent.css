@@ -1,0 +1,12 @@
+.event-description {
+    width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+    border: 2px solid #242333;
+    border-radius: 4px;
+    background-color: #1A1A24;
+    resize: none;
+    margin-bottom: 20px;
+    color: #F6F9FF;
+    border-radius: 8px;
+}

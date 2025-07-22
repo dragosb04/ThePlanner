@@ -65,9 +65,8 @@ function Settings() {
     return (
         <>
             <Header />
-            <div className="form-box" style={{ width: '100vh', height: 'fit-content' }}>
-                <h2>Setările tale</h2>
-                <form onSubmit={handleSubmit}>
+            <div className="form-box">
+                <form className='form-group' onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Username:</label>
                         <input

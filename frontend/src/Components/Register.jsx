@@ -24,7 +24,7 @@ function Register() {
     const data = await response.json();
 
     if (response.ok) {
-      alert('Înregistrare reușită! Te poți loga acum.');
+      alert('Înregistrare reușită! Te poți conecta acum.');
       navigate('/login');
     } else {
       alert(data.message || 'Eroare la înregistrare');
@@ -34,7 +34,7 @@ function Register() {
   return (
     <div className="form-box">
       <h2>Înregistrează-te</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='form-group' onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Nume utilizator"
@@ -57,8 +57,7 @@ function Register() {
           required
         />
         <button type="submit">Înregistrare</button>
-                <div style={{ marginTop: '20px', fontSize: '14px' }}>
-          Ai deja cont?{' '}
+                <div style={{ marginTop: '20px', fontSize: '14px' }}> Ai deja cont?{' '}
           <Link to="/login" style={{ color: '#656879', textDecoration: 'none', padding: '0 4px' }}>
             Autentifică-te aici
           </Link>

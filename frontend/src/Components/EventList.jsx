@@ -39,7 +39,7 @@ function EventList() {
 
   return (
     <div className="event-list-container">
-      <h2 className="event-list-title">Evenimentele tale</h2>
+      <h2 className="event-list-title">Toate evenimentele</h2>
       {events.map((event, index) => (
         <div key={index} className="event-card">
           <div className="event-details">
@@ -50,7 +50,7 @@ function EventList() {
             <div className={`event-days ${getDaysLeftClass(event.daysLeft)}`}>
               {event.daysLeft}
             </div>
-            <div className="days-label">zile rămase</div>
+            <div className="days-label">{event.daysLeft == 1 ? 'zi rămasă' : 'zile rămase'}</div>
           </div>
         </div>
       ))}

@@ -33,7 +33,7 @@ function Login() {
   return (
     <div className="form-box">
       <h2>Autentificare</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='form-group' onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"

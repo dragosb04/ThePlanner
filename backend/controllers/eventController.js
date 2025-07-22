@@ -38,3 +38,11 @@ exports.deleteEvent = (req, res) => {
     res.json({ message: 'Event deleted' });
   });
 };
+
+exports.getEventsByUserId = (req, res) => {
+  const userID = req.params.userID;
+  Event.getEventsByUserId(userID, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results);
+  });
+}

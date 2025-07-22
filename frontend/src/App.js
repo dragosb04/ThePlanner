@@ -4,6 +4,8 @@ import Register from './Components/Register';  // creează această componentă
 import PrivateRoute from './Components/PrivateRoute'; // vezi codul anterior
 import Settings from './Components/Settings';
 import DashboardLayout from './Components/DashboardLayout';
+import AddEvent from './Components/AddEvent'; // creează această componentă
+import MyEvents from './Components/MyEvents'; // creează această componentă
 
 
 function App() {
@@ -27,6 +29,22 @@ function App() {
           element={
             <PrivateRoute>
               <Settings />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/my-events"
+          element={
+            <PrivateRoute>
+              <MyEvents />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <PrivateRoute>
+              <AddEvent />
             </PrivateRoute>
           }
         />
