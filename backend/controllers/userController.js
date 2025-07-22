@@ -38,6 +38,23 @@ const userController = {
 
       res.json(results);
     });
+  },
+  updateCurrentUser: (req, res) => {
+    const userId = req.user.userId;
+    const { username, email, profile_picture, status, role } = req.body;
+
+    User.update(userId, { username, email, profile_picture, status, role }, (err, result) => {
+      if (err) {
+        console.error('Eroare la actualizarea utilizatorului:', err);
+        return res.status(500).json({ error: 'Eroare la actualizarea utilizatorului.' });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ error: 'Utilizatorul nu a fost găsit.' });
+      }
+
+      res.json({ message: 'Utilizator actualizat cu succes!' });
+    });
   }
 };
 

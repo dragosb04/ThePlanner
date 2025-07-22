@@ -1,15 +1,29 @@
 import React from 'react';
 import './BottomNav.css';
 import { FaHome, FaSearch, FaPlusCircle, FaList, FaCog } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 
 function BottomNav() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <div className="bottom-nav">
-      <div className="nav-icon active"><FaHome /></div>
-      <div className="nav-icon"><FaSearch /></div>
-      <div className="nav-icon central"><FaPlusCircle /></div>
-      <div className="nav-icon"><FaList /></div>
-      <div className="nav-icon"><FaCog /></div>
+      <div className={`nav-icon ${currentPath === '/' ? 'active' : ''}`}>
+        <Link to="/"><FaHome /></Link>
+      </div>
+      <div className={`nav-icon ${currentPath === '/search' ? 'active' : ''}`}>
+        <Link to="/search"><FaSearch /></Link>
+      </div>
+      <div className="nav-icon central">
+        <FaPlusCircle />
+      </div>
+      <div className={`nav-icon ${currentPath === '/list' ? 'active' : ''}`}>
+        <Link to="/list"><FaList /></Link>
+      </div>
+      <div className={`nav-icon ${currentPath === '/settings' ? 'active' : ''}`}>
+        <Link to="/settings"><FaCog /></Link>
+      </div>
     </div>
   );
 }

@@ -1,14 +1,39 @@
-import Header from './Components/Header';
-import EventList from './Components/EventList';
-import BottomNav from './Components/BottomNav';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './Components/Login';  // creează această componentă
+import Register from './Components/Register';  // creează această componentă
+import PrivateRoute from './Components/PrivateRoute'; // vezi codul anterior
+import Settings from './Components/Settings';
+import DashboardLayout from './Components/DashboardLayout';
+
 
 function App() {
   return (
-    <>
-    <Header />
-    <EventList />
-    <BottomNav />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* zona protejată */}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <DashboardLayout />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <Settings />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
 

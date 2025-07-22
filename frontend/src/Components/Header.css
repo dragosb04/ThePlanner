@@ -12,6 +12,7 @@
 .welcome-text {
   display: flex;
   flex-direction: column;
+  align-items: first baseline;
 }
 .welcome-header-text{
     font-size: 2rem;
@@ -24,17 +25,34 @@
 }
 
 .user-info {
+  text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* spațiu maxim între stânga și dreapta */
   align-items: center;
+  flex-direction: column;
   font-size: 0.75rem;
   color: #a0a0b0; /* text mai deschis */
 }
 
 .user-img {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin-bottom: 8px;
   filter: brightness(0.7);
+}
+
+.logout-text{
+  color: #a0a0b0; /* text mai deschis */
+  font-size: 0.75rem;
+  margin-top: 5px;
+}
+
+.logout-button {
+  border: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+    font-size: 0.75rem;
+  color: #a0a0b0; /* text mai deschis */
 }

@@ -36,7 +36,8 @@ const User = {
         username = ?,
         email = ?,
         profile_picture = ?,
-        status = ?
+        status = ?,
+        role = ?
       WHERE id = ?
     `;
     const values = [
@@ -44,6 +45,7 @@ const User = {
       updatedData.email,
       updatedData.profile_picture || null,
       updatedData.status || null,
+      updatedData.role || null,
       id
     ];
     db.query(sql, values, callback);
