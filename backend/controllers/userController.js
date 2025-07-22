@@ -28,6 +28,16 @@ const userController = {
 
       res.json(results[0]);
     });
+  },
+  getAllUsers: (req, res) => {
+    User.getAll((err, results) => {
+      if (err) {
+        console.error('Eroare la preluarea utilizatorilor:', err);
+        return res.status(500).json({ error: 'Eroare la preluarea utilizatorilor.' });
+      }
+
+      res.json(results);
+    });
   }
 };
 

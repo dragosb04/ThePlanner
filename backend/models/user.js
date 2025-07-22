@@ -47,6 +47,10 @@ const User = {
       id
     ];
     db.query(sql, values, callback);
+  },
+  getAll: (callback) => {
+    const sql = `SELECT * FROM users`;
+    db.query(sql, callback);
   }
 };
 

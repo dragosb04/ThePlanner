@@ -1,0 +1,72 @@
+.event-list-container {
+  padding: 24px;
+  color: #fff;
+}
+
+.event-list-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.event-card {
+  background-color: #242333;
+  border-radius: 15px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  filter: drop-shadow(0px 5px 2px #00000011);
+  transition: transform 0.2s ease-in-out;
+}
+
+.event-card:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+  
+}
+
+h2 {
+    font-weight: normal;
+}
+
+.event-date {
+  font-size: 0.7rem;
+  color: #656879;
+}
+
+.event-countdown {
+  text-align: right;
+}
+
+.event-days {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.days-label {
+  font-size: 0.7rem;
+  color: #656879;
+}
+
+.event-days.danger {
+  color: #ff5c5c;
+}
+
+.event-days.warning {
+  color: #4ea8de;
+}
+
+.event-days.safe {
+  color: #b0f34e;
+}
