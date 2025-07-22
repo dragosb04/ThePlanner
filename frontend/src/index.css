@@ -7,6 +7,10 @@ body {
   background-color: #1A1A24;
   color: #F6F9FF;
 }
+
+button, input, textarea, form{
+    font-family: "Rubik", sans-serif;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

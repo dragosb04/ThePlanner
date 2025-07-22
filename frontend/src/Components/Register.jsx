@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Form.css';
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,26 +15,33 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/users/login', {
+    const response = await fetch('http://localhost:3001/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, username }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      localStorage.setItem('token', data.token);
-      navigate('/');
+      alert('Înregistrare reușită! Te poți loga acum.');
+      navigate('/login');
     } else {
-      alert(data.message || 'Eroare la autentificare');
+      alert(data.message || 'Eroare la înregistrare');
     }
   };
 
   return (
     <div className="form-box">
-      <h2>Autentificare</h2>
+      <h2>Înregistrează-te</h2>
       <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nume utilizator"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          required
+        />
         <input
           type="email"
           placeholder="Email"
@@ -48,11 +56,11 @@ function Login() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
-        <div style={{ marginTop: '20px', fontSize: '14px' }}>
-          Nu ai cont?{' '}
-          <Link to="/register" style={{ color: '#656879', textDecoration: 'none', padding: '0 4px' }}>
-            Înregistrează-te aici
+        <button type="submit">Înregistrare</button>
+                <div style={{ marginTop: '20px', fontSize: '14px' }}>
+          Ai deja cont?{' '}
+          <Link to="/login" style={{ color: '#656879', textDecoration: 'none', padding: '0 4px' }}>
+            Autentifică-te aici
           </Link>
         </div>
       </form>
@@ -60,4 +68,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

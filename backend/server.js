@@ -93,7 +93,35 @@ app.post('/login', (req, res) => {
   });
 });
 
+app.put('/api/settings', (req, res) => {
+  // Preia profilePicture din body și mapează-l la profile_picture
+  const { username, email, profilePicture, status, role } = req.body;
 
+  console.log('Received settings:', { username, email, profilePicture, status, role });
+
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'Token lipsă sau invalid' });
+  }
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: 'Token invalid' });
+    }
+
+    const userId = decoded.id;
+    db.query(
+      'UPDATE users SET username = ?, email = ?, profile_picture = ?, status = ?, role = ? WHERE id = ?',
+      [username, email, profilePicture || null, status || null, role || null, userId],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ message: 'Eroare la actualizarea setărilor' });
+        }
+        res.status(200).json({ message: 'Setările au fost actualizate cu succes' });
+      }
+    );
+  });
+});
 
 // Test route
 app.get('/', (req, res) => {
