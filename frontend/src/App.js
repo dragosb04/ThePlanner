@@ -6,6 +6,7 @@ import Settings from './Components/Settings';
 import DashboardLayout from './Components/DashboardLayout';
 import AddEvent from './Components/AddEvent'; // creează această componentă
 import MyEvents from './Components/MyEvents'; // creează această componentă
+import Search from './Components/Search'; // creează această componentă
 
 
 function App() {
@@ -45,6 +46,15 @@ function App() {
           element={
             <PrivateRoute>
               <AddEvent />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/search"
+          element={
+            <PrivateRoute>
+              <Search />
             </PrivateRoute>
           }
         />
