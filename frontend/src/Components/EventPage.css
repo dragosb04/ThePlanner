@@ -63,6 +63,7 @@
 textarea,
 .event-input {
     width: 100%;
+    font-size: 1rem;
     padding: 0.5rem;
     border-radius: 8px;
     border: 1px solid #1A1A24;

@@ -27,7 +27,7 @@ function EventPage() {
     }
 
     const userId = getUserIdFromToken(token);
-
+    console.log(creator);
     useEffect(() => {
         const fetchEvent = async () => {
             try {
@@ -81,13 +81,17 @@ function EventPage() {
 
     const handleSave = async () => {
         try {
-            // Transforma eventDate în format YYYY-MM-DD
+            // Asigură-te că data este în format corect
+            const formattedDate = editedEvent.eventDate
+                ? new Date(editedEvent.eventDate).toISOString().split('T')[0]
+                : "";
+
             const payload = {
                 ...editedEvent,
-                eventDate: editedEvent.eventDate
-                    ? editedEvent.eventDate.slice(0, 10)
-                    : ""
+                eventDate: formattedDate
             };
+
+            console.log("Payload trimis la API:", payload);
 
             const res = await fetch(`http://localhost:3000/api/events/${id}`, {
                 method: 'PUT',
@@ -99,15 +103,31 @@ function EventPage() {
             });
 
             const text = await res.text();
+            console.log("Răspuns brut de la API:", text);
 
             if (!res.ok) {
                 throw new Error("Eroare la salvarea modificărilor.");
             }
-            const updated = JSON.parse(text);
-            setEvent(updated);
-            setIsEditing(false);
+
+            let updatedEvent;
+            try {
+                updatedEvent = JSON.parse(text);
+                console.log("JSON parsabil de la API:", updatedEvent);
+            } catch (e) {
+                console.error("Nu s-a putut parsa răspunsul ca JSON:", e);
+                updatedEvent = null;
+            }
+
+            if (updatedEvent) {
+                setEvent(updatedEvent);
+                setEditedEvent(updatedEvent);
+                setOriginalEvent(updatedEvent);
+                setIsEditing(false);
+            }
+
         } catch (error) {
-            console.error(error);
+            console.error("Eroare la salvare:", error);
+            alert("A apărut o eroare la salvarea modificărilor.");
         }
     };
 
@@ -185,13 +205,11 @@ function EventPage() {
 
                 <div className="event-page-creator">
                     <strong>Creator:</strong>{" "}
-                    {creator.profile_picture && (
                         <img
-                            src={creator.profile_picture}
+                            src={creator.profile_picture ? creator.profile_picture : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                             alt="Creator"
                             className="creator-img"
-                        />
-                    )}{" "}
+                        />{" "}
                     {creator.username || "Necunoscut"}
                 </div>
 

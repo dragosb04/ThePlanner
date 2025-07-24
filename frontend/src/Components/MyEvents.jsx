@@ -4,6 +4,7 @@ import './EventList.css';
 import useCurrentUser from "../Hooks/useCurrentUser";
 import { MdModeEdit } from 'react-icons/md';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function getDaysLeftClass(days) {
     if (days <= 3) return "danger";
@@ -33,6 +34,7 @@ function MyEvents() {
                         }) + (event.eventTime ? `, ${event.eventTime.slice(0, 5)}` : '');
 
                         return {
+                            id: event.id,
                             title: event.name,
                             date: formattedDate,
                             daysLeft: daysLeft < 0 ? 0 : daysLeft,
@@ -55,9 +57,9 @@ function MyEvents() {
                 ) : (
                     <>
                         {events.map((event, index) => (
-                            <div key={index} className="event-card">
+                            <Link to={`/event/${event.id}`} key={index} className="event-card">
                                 <div className="event-details">
-                                    <div className="event-title">{event.title} <MdModeEdit style={{ margin: "0px 5px" }} /></div>
+                                    <div className="event-title">{event.title}</div>
                                     <div className="event-date">{event.date}</div>
                                 </div>
                                 <div className="event-countdown">
@@ -66,7 +68,7 @@ function MyEvents() {
                                     </div>
                                     <div className="days-label">zile rămase</div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </>
                 )}

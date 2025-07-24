@@ -28,7 +28,12 @@ exports.updateEvent = (req, res) => {
   const eventData = req.body;
   Event.update(id, eventData, (err) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.json({ message: 'Event updated' });
+    // Preia eventul actualizat și îl trimite la frontend
+    Event.getById(id, (err2, results) => {
+      if (err2) return res.status(500).json({ error: err2.message });
+      if (results.length === 0) return res.status(404).json({ message: 'Event not found' });
+      res.status(200).json(results[0]);
+    });
   });
 };
 
