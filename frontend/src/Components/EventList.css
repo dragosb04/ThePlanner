@@ -18,6 +18,7 @@
   margin-bottom: 16px;
   filter: drop-shadow(0px 5px 2px #00000011);
   transition: transform 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .event-card:hover {
@@ -35,6 +36,7 @@
   margin-bottom: 4px;
   align-items: center;
   display: inherit;
+  color: #fff;
 }
 
 h2 {

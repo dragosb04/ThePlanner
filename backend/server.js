@@ -5,6 +5,8 @@ require('dotenv').config();
 const db = require('./models/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cron = require('node-cron');
+const { deleteExpiredEvents } = require('./deleteExpiredEvents');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +22,12 @@ app.use(cookieParser());
 const eventRoutes = require('./routes/eventRoutes');
 const userRoutes = require('./routes/userRoutes');
 const groupRoutes = require('./routes/groupRoutes');
+
+cron.schedule('0 0 * * *', () => {
+  console.log('Verificare evenimente expirate...');
+  deleteExpiredEvents();
+});
+
 
 //Login and Register
 const JWT_SECRET = process.env.JWT_SECRET;

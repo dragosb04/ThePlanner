@@ -1,0 +1,98 @@
+.event-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #242333;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    filter: drop-shadow(0px 5px 2px #00000011);
+    width: 100%;
+    margin: 20px auto 100px auto;
+    box-sizing: border-box;
+}
+
+.event-page-container h1 {
+    font-size: 1.7rem;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.event-page-description {
+    font-size: 1.2rem;
+}
+
+.event-page-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.event-page-info strong {
+    font-size: 1.3rem;
+    display: block;
+}
+
+.event-info-column {
+    display: grid;
+    box-sizing: border-box;
+    color: #a0a0b0;
+}
+
+.creator-img {
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+    filter: brightness(0.7);
+    object-fit: cover;
+    vertical-align: middle;
+    transition: ease 0.5s;
+}
+
+.creator-img:hover {
+    filter: brightness(1);
+}
+
+.event-page-creator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-info-column input,
+textarea,
+.event-input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #1A1A24;
+    background-color: #1A1A24;
+    color: #fff;
+}
+
+.event-textarea {
+    resize: vertical;
+}
+
+.action-btn {
+    background-color: #724EF9;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+.event-page-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.delete {
+    background-color: #f93333;
+}

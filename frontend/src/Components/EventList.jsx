@@ -1,5 +1,6 @@
-import React from 'react';
 import './EventList.css';
+import { Link } from 'react-router-dom';
+
 import { useEffect, useState } from "react";
 
 function getDaysLeftClass(days) {
@@ -28,6 +29,7 @@ function EventList() {
           }) + (event.eventTime ? `, ${event.eventTime.slice(0, 5)}` : '');
 
           return {
+            id: event.id,
             title: event.name,
             date: formattedDate,
             daysLeft: daysLeft < 0 ? 0 : daysLeft,
@@ -41,7 +43,7 @@ function EventList() {
     <div className="event-list-container">
       <h2 className="event-list-title">Toate evenimentele</h2>
       {events.map((event, index) => (
-        <div key={index} className="event-card">
+        <Link to={`/event/${event.id}`} key={index} className="event-card">
           <div className="event-details">
             <div className="event-title">{event.title}</div>
             <div className="event-date">{event.date}</div>
@@ -52,7 +54,7 @@ function EventList() {
             </div>
             <div className="days-label">{event.daysLeft == 1 ? 'zi rămasă' : 'zile rămase'}</div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

@@ -29,13 +29,12 @@ const Event = {
     },
 
     update: (id, eventData, callback) => {
-        const sql = `UPDATE events SET name=?, eventDate=?, eventTime=?, groups=?, location=?, details=?
+        const sql = `UPDATE events SET name=?, eventDate=?, eventTime=?, location=?, details=?
                      WHERE id = ?`;
         const values = [
             eventData.name,
             eventData.eventDate,
             eventData.eventTime,
-            eventData.groups,
             eventData.location,
             eventData.details,
             id,
